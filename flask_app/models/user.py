@@ -20,7 +20,6 @@ class User:
     def create(cls,data):
         query = 'insert into users(first_name,last_name,email,password) VALUES (%(first_name)s, %(last_name)s,%(email)s,%(password)s);'
         results = connectToMySQL(cls.db_name).query_db(query,data)
-        print("this is results!!!!!",results)
         return results
 
     @staticmethod

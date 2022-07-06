@@ -37,18 +37,25 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>                          
                     </div>      
-                </form>             
+                </form>    
+                {% with messages = get_flashed_messages() %}  
+                        {% if messages %}                           
+                            {% for message in messages %}           
+                            <p>{{message}}</p>                   
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}          
             </div>
             <div class="col">
                 <div class="p-3 bg-transparent text-light"><h2 class="text-center">Login</h2>
-                    <form>
+                    <form action="/login" method="post">
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 250px;">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="text" class="form-control" name="email" aria-describedby="emailHelp" style="width: 250px;">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" style="width: 250px;">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password" style="width: 250px;">
                         </div>  
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
