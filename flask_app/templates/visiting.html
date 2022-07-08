@@ -9,7 +9,7 @@
     <style>
         [class*='col']{
             padding: 1rem;
-            background-color: aqua;
+            background-color: paleturquoise;
             border: 2px solid #fff;
             color: #fff;
         }
@@ -18,9 +18,11 @@
 <body>
     <div class="container">
         <div class="row justify-content-center" style="height: 500px">
-            <div class="col-7"><h1>Where are you going {{ user.first_name }}?</h1></div>
-        </div>       
+            <div class="col-6"><h1 class="text-center">Where are you going {{ user.first_name }}?</h1></div>
+        </div>   
+        <div>
+            <a href="/foreword">Foreword</a>
+        </div>    
     </div>
-    
 </body>
 </html>
