@@ -8,18 +8,28 @@
     <title>Local</title>
 </head>
 <body>
-    <div class="mx-auto card text-center" style="width: 28rem; height: 32rem; background-color: brown; margin-top: 28px;"> 
+    <div class="mx-auto card text-center" style="width: 28rem; height: 38rem; background-color: brown; margin-top: 5px;"> 
         <div class="">
             <form action="/local" >
                 <h1 class="card-header">{{ user.first_name }} is a Local</h1>
                 <div class="card-body">
-                    <label for="type" class="form-label">Type</label>
+                    <div class="row">
+                        <div class="col">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" placeholder="Muncie" name="city">
+                        </div>
+                        <div class="col">
+                            <label for="state">State</label>
+                            <input type="text" class="form-control" name="state" placeholder="Indiana">
+                        </div>
+                    </div>
+                    <label for="name">What's the name of the place?</label>
+                    <input type="text" name="name" class="form-control">
+                    <label for="type" class="form-label">Type</label>                
                     <select name="type" class="form-select">
                         <option value="other">Food</option>
                         <option value="other">Drinks</option>
                     </select>
-                    <label for="location">Location(city/state)</label>
-                    <input type="text" name="location" class="form-control" placeholder="muncie/indiana">
                     <label for="vibe" class="form-label">Vibe</label>
                     <select name="type" class="form-select">
                         <option value="other">Chill</option>
@@ -32,11 +42,11 @@
                         <option value="other">$$</option>
                         <option value="other">$$$</option>
                     </select>
-
                     <label for="description">Tell us more about it</label>
-                    <textarea name="description" cols="25" rows="4" class="form-control"></textarea>
+                    <textarea name="description" cols="25" rows="3" class="form-control"></textarea>
                 </div>
-                <div><br>
+                <button type="button" class="btn btn-light">Send</button>
+                <div>
                     <a href="/foreword">Foreword</a>
                 </div>
             </form>   
