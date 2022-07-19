@@ -8,10 +8,18 @@ class Place:
     db_place = 'locals_only'
     def __init__(self,data):
         self.id  = data['id ']
-        self.name = data['name']
         self.city = data['city']
         self.state= data['state']
+        self.name = data['name']
         self.type = data['type']
         self.vibe = data['vibe']
         self.price = data['price']
-        pass
+        self.description = data['description']
+        
+    @classmethod
+    def create_place(cls,data):
+        query = "INSERT INTO places(city,state,name,type,vibe,price,description) VALUES (%(city)s,%(state)s,%(name)s,%(type)s,%(vibe)s,%(price)s,%(description)s);"
+        results = connectToMySQL(cls.db_place).query_db(query,data)
+        return results
+
+    

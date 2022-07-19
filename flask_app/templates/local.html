@@ -10,13 +10,13 @@
 <body>
     <div class="mx-auto card text-center" style="width: 28rem; height: 38rem; background-color: brown; margin-top: 5px;"> 
         <div class="">
-            <form action="/local" >
-                <h1 class="card-header">{{ user.first_name }} is a Local</h1>
+            <h1 class="card-header">{{ user.first_name }} is a Local</h1>
+            <form action="/place/create" method="post" >
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
                             <label for="city">City</label>
-                            <input type="text" class="form-control" placeholder="Muncie" name="city">
+                            <input type="text"  name="city" class="form-control" placeholder="Muncie" name="city">
                         </div>
                         <div class="col">
                             <label for="state">State</label>
@@ -31,7 +31,7 @@
                         <option value="other">Drinks</option>
                     </select>
                     <label for="vibe" class="form-label">Vibe</label>
-                    <select name="type" class="form-select">
+                    <select name="vibe" class="form-select">
                         <option value="other">Chill</option>
                         <option value="other">Lively</option>
                         <option value="other">Party Time</option>
@@ -45,11 +45,11 @@
                     <label for="description">Tell us more about it</label>
                     <textarea name="description" cols="25" rows="3" class="form-control"></textarea>
                 </div>
-                <button type="button" class="btn btn-light">Send</button>
-                <div>
-                    <a href="/foreword">Foreword</a>
-                </div>
-            </form>   
+                <button type="button" class="btn btn-light">Send</button>    
+            </form>  
+            <div>
+                <a href="/foreword">Foreword</a>
+            </div> 
         </div>                        
     </div>   
 </body>
