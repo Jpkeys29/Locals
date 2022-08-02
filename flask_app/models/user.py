@@ -1,3 +1,5 @@
+from sqlite3 import Row
+from unittest import result
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
 from flask import flash, session
@@ -6,7 +8,7 @@ import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class User:
-    db_name = 'locals_only'
+    db_name = 'locals'
     def __init__(self,data):
         self.id = data['id']
         self.first_name= data['first_name']
@@ -62,3 +64,12 @@ class User:
         if len(results)>=1:
             valid = False
         return cls(results[0])
+
+    @classmethod
+    def get_all_users(cls):
+        query = 'SELECT * FROM users;'
+        results = connectToMySQL(cls.db_name).query_db(query)
+        all_users = []
+        for row in results:
+            all_users.append(cls(row))
+        return all_users

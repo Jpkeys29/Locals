@@ -1,9 +1,9 @@
-from crypt import methods
 from flask import render_template, redirect, request, session,flash
 from flask_app import app
 from flask_app.models import user
+from flask_app.models.place import Place
 from flask_app.models.user import User
-from flask_app.models.user import User
+
 
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
@@ -23,26 +23,27 @@ def create_user():
         'password': bcrypt.generate_password_hash(request.form['password']),
     }
     session['user_id'] = User.create(user_data)
-    return redirect('/foreword')
+    return redirect('/home')
 
 @app.route('/login', methods=['POST'])
 def login():
     user_from_db = user.User.get_by_email({'email': request.form['email']})
     if user_from_db and bcrypt.check_password_hash(user_from_db.password, request.form ['password']):
         session['user_id'] = user_from_db.id
-        return redirect('/foreword')
+        return redirect('/home')
     else:
         flash("Invalid email/password", 'login')
         return redirect('/')
 
-@app.route('/foreword')
+@app.route('/home')
 def foreword():
     if 'user_id' not in session:
+        flash("You must be logged in to view this page")
         return redirect('/')
     user_diction ={
         'id':session['user_id']
     }
-    return render_template('foreword.html', user= User.get_by_id(user_diction))
+    return render_template('home.html', user= User.get_by_id(user_diction),all_places = Place.get_all_places())
 
 @app.route('/local')
 def local():
@@ -60,7 +61,7 @@ def visit():
     user_diction ={
         'id':session['user_id']
     }
-    return render_template('visiting.html', user= User.get_by_id(user_diction))
+    return render_template('visiting.html', user= User.get_by_id(user_diction), users = User.get_all_users())
 
 
 @app.route('/logout')
@@ -68,3 +69,7 @@ def logout():
     session.clear()
     return redirect('/')
 
+# @app.route('/')
+# def users():
+#     results = user.User.get_all_users()
+#     return render_template('myplaces.html', users =results)

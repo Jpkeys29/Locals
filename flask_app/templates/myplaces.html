@@ -5,25 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Visiting</title>
-    <!-- <style>
-        [class*='col']{
-            padding: 1rem;
-            background-color: paleturquoise;
-            border: 2px solid #fff;
-            color: #fff;
-        }
-    </style> -->
+    <title>myplaces</title>
 </head>
 <body>
-    <div class="mx-auto card text-center" style="width: 28rem; height: 36rem; background-color: paleturquoise; margin-top: 5px;">
-        <h1 class="card-header">Where are you going {{ user.first_name }}?</h1>
+    <div class="mx-auto card text-center" style="width: 40rem; height: 38rem; background-color: rgba(41, 18, 189, 0.496); margin-top: 5px;">
+        <h1 class="class-header">My Places</h1>
         <div class="card-body">
-            {% for user in users %}
-            <p>{{user.first_name}}</p>
+            {% for place in all_places%}
+            <p>{{place.name}}</p>
+            <p>
+                <a href="/myplaces">{{place.name}}</a>
+            </p>
             {% endfor %}
+
+        </div>
+        <div>
             <a href="/home">Home</a>
         </div>
     </div>
+    
 </body>
 </html>
