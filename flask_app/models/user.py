@@ -17,6 +17,7 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.places =[] # empty list holding places for this user
 
     @classmethod
     def create(cls,data):
@@ -72,4 +73,6 @@ class User:
         all_users = []
         for row in results:
             all_users.append(cls(row))
+        # print(row)
         return all_users
+        print(all_users)

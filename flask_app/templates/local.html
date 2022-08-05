@@ -8,15 +8,16 @@
     <title>Local</title>
 </head>
 <body>
-    <div class="mx-auto card text-center" style="width: 28rem; height: 38rem; background-color: rgb(215, 46, 46); margin-top: 5px;"> 
+    <div class="mx-auto card text-center" style="width: 28rem; height: 38rem; background-color: rgb(237, 67, 73); margin-top: 5px;"> 
         <div class="">
             <h1 class="card-header">{{ user.first_name }} is a Local</h1>
             <form action="/place/create" method="post" >
+                <input name="user_id" type="hidden" value="{{session.user_id}}">
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
                             <label for="city">City</label>
-                            <input type="text"  name="city" class="form-control" placeholder="Muncie" name="city">
+                            <input type="text"  name="city" class="form-control" placeholder="Muncie">
                         </div>
                         <div class="col">
                             <label for="state">State</label>
@@ -45,8 +46,16 @@
                     <label for="description">Tell us more about it</label>
                     <textarea name="description" cols="25" rows="3" class="form-control"></textarea>
                 </div>
-                <button type="button" class="btn btn-light">Send</button>    
+                <button type="button" class="btn btn-outline-dark">Send</button>  
+                <input type="submit" value="Create">  
             </form>  
+            {% with messages = get_flashed_messages() %}  
+                        {% if messages %}                           
+                            {% for message in messages %}           
+                            <p>{{message}}</p>                   
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}   
             <div>
                 <a href="/home">Home</a>
             </div> 

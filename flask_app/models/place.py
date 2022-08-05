@@ -17,6 +17,8 @@ class Place:
         self.description = data['description']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.user_id = data['user_id'] #It tells us which user created that place
+        self.reviewer = None #Link a user to this place
         
     @classmethod
     def create_place(cls,data):
@@ -32,6 +34,7 @@ class Place:
         for row in results:
             places_objects.append(cls(row))
         return places_objects
+        
 
 
     @classmethod
@@ -41,6 +44,20 @@ class Place:
         if len(results)<1:
             return False
         return cls(results[0])
+
+    @staticmethod
+    def validate_place(form_data):
+        valid = True
+        if len(form_data["city"])<2:
+            valid = False
+            flash('Location must be at least 2 characters')
+        if len(form_data["name"])<2:
+            valid = False
+            flash('The name of the place must be at least 2 characters')
+        if len(form_data["description"])<3:
+            valid = False
+            flash('Description must be at least 3 characters')
+    
 
     # @classmethod
     # def update(cls,data):

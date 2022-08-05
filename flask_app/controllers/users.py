@@ -4,7 +4,6 @@ from flask_app.models import user
 from flask_app.models.place import Place
 from flask_app.models.user import User
 
-
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -35,15 +34,15 @@ def login():
         flash("Invalid email/password", 'login')
         return redirect('/')
 
-@app.route('/home')
-def foreword():
-    if 'user_id' not in session:
-        flash("You must be logged in to view this page")
-        return redirect('/')
-    user_diction ={
-        'id':session['user_id']
-    }
-    return render_template('home.html', user= User.get_by_id(user_diction),all_places = Place.get_all_places())
+# @app.route('/home')
+# def home():
+#     if 'user_id' not in session:
+#         flash("You must be logged in to view this page")
+#         return redirect('/')
+#     user_diction ={
+#         'id':session['user_id']
+#     }
+#     return render_template('home.html', user= User.get_by_id(user_diction),places = Place.get_all_places())
 
 @app.route('/local')
 def local():
@@ -68,8 +67,3 @@ def visit():
 def logout():
     session.clear()
     return redirect('/')
-
-# @app.route('/')
-# def users():
-#     results = user.User.get_all_users()
-#     return render_template('myplaces.html', users =results)
