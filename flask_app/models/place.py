@@ -57,6 +57,7 @@ class Place:
         if len(form_data["description"])<3:
             valid = False
             flash('Description must be at least 3 characters')
+        return valid
     
 
     # @classmethod
