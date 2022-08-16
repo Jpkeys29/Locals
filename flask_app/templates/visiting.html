@@ -16,12 +16,18 @@
     </style> -->
 </head>
 <body>
-    <div class="mx-auto card text-center" style="width: 28rem; height: 36rem; background-color: paleturquoise; margin-top: 5px;">
+    <div class="mx-auto card text-center" style="width: 28rem; height: 36rem; background-color: rgb(235, 191, 129); margin-top: 5px;">
         <h1 class="card-header">Where are you going {{ user.first_name }}?</h1>
         <div class="card-body">
-            {% for user in users %}
+            <form action="/places/goplaces", method="post">
+                <label for="places">City:</label>
+                <input type="text" name="places">
+                <button type="submit">Find places</button>
+
+            </form>
+            <!-- {% for user in users %}
             <p>{{user.first_name}}</p>
-            {% endfor %}
+            {% endfor %} -->
             
         </div>
         <div>

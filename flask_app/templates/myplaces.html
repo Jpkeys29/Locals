@@ -11,18 +11,20 @@
     <div class="mx-auto card text-center" style="width: 40rem; height: 38rem; background-color: rgba(41, 18, 189, 0.496); margin-top: 5px;">
         <h1 class="class-header">My Places</h1>
         <div class="card-body">
-            {% for place in all_places%}
-            <p>{{place.city}} {{place.state}}</p>
-            <p>{{place.name}}</p>
-            <p>{{place.description}}</p>
-            
+            {% for place in place %}
             <p>
-                <a href="/myplaces">{{place.name}}</a>
-                <a href="/myplaces/{{place.id}}">{{place.name}} ({{place.city}})</a>
-            </p>
+                <a href="/viewplaces/{{place.id}}">{{place.name}} ({{place.city}})</a>
+                <!-- <p>{{place.description}}</p>
+                <p>Created by: {{place.reviewer.first_name}}</p> -->
+                {% if session['user_id'] == place.reviewer.id %}
+                <a href="/viewplaces/{{place.id}}/edit">Edit</a>
+                <a href="/viewplaces/{{place.id}}/delete">Delete</a>
+                {% endif %}
+            </p>  
             {% endfor %}
 
         </div>
+        <p><a href="/local">Add a Place</a></p>
         <div>
             <a href="/home">Home</a>
         </div>
