@@ -18,10 +18,10 @@
             {% for place in place %}
             <p>
                 <a href="/viewplaces/{{place.id}}">{{place.name}} ({{place.city}})</a>
-                <!-- {% if session['user_id'] == place.reviewer.id %} -->
+                {% if session['user_id'] == place.reviewer.id %}
                 <a href="/viewplaces/{{place.id}}/edit">Edit</a>
                 <a href="/viewplaces/{{place.id}}/delete">Delete</a>
-                <!-- {% endif %} -->
+                {% endif %}
             </p>  
             {% endfor %}
 
