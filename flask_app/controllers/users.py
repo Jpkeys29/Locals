@@ -34,15 +34,15 @@ def login():
         flash("Invalid email/password", 'login')
         return redirect('/')
 
-# @app.route('/home')
-# def home():
-#     if 'user_id' not in session:
-#         flash("You must be logged in to view this page")
-#         return redirect('/')
-#     user_diction ={
-#         'id':session['user_id']
-#     }
-#     return render_template('home.html', user= User.get_by_id(user_diction),places = Place.get_all_places())
+@app.route('/home')
+def home():
+    if 'user_id' not in session:
+        flash("You must be logged in to view this page")
+        return redirect('/')
+    user_diction ={
+        'id':session['user_id']
+    }
+    return render_template('home.html', user= User.get_by_id(user_diction),places = Place.get_all_places())
 
 @app.route('/local')
 def local():

@@ -23,25 +23,6 @@ def create_place():
     Place.create_place(place_diction)
     return redirect ('/home')
 
-@app.route('/home')
-def home():
-    if 'user_id' not in session:
-        flash("You must be logged in to view this page")
-        return redirect('/')
-    user_diction ={
-        'id':session['user_id']
-    }
-    return render_template('home.html', user= User.get_by_id(user_diction),places = Place.get_all_places())
-
-
-# @app.route('/myplaces')
-# def my_places():
-#     if 'user_id' not in session:
-#         return redirect('/')
-#     user_diction ={
-#         'id':session['user_id']
-#     }
-#     return render_template('myplaces.html', user= User.get_by_id(user_diction),place = Place.get_all_places_with_reviewers())
 
 @app.route('/myplaces/')
 def my_places():
@@ -51,8 +32,6 @@ def my_places():
         'id':session['user_id']
     }
     return render_template('myplaces.html', user= User.get_by_id(user_diction),place = Place.get_all_places_with_reviewers())
-
-
 
 @app.route("/places/goplaces", methods=['POST'])
 def goplaces():
@@ -74,6 +53,7 @@ def goplaces():
     Place.get_all_from_one_city(place_diction)
     return redirect('/placereview')
 
+
 @app.route('/placereview')
 def place_review():
     if 'user_id' not in session:
@@ -82,6 +62,7 @@ def place_review():
         'id':id
     }
     return render_template('placereview.html',user= User.get_by_id(place_diction),places = Place.get_all_from_one_city())
+
 
 @app.route("/viewplaces/<int:id>")
 def view_place_page(id):

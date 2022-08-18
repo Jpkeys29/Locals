@@ -11,15 +11,17 @@
     <div class="mx-auto card text-center" style="width: 40rem; height: 38rem; background-color: rgba(41, 18, 189, 0.496); margin-top: 5px;">
         <h1 class="class-header">My Places</h1>
         <div class="card-body">
+
+            {% for this_place in this_user_with_places %}
+            {{this_place.name}}
+            {% endfor %} 
             {% for place in place %}
             <p>
                 <a href="/viewplaces/{{place.id}}">{{place.name}} ({{place.city}})</a>
-                <!-- <p>{{place.description}}</p>
-                <p>Created by: {{place.reviewer.first_name}}</p> -->
-                {% if session['user_id'] == place.reviewer.id %}
+                <!-- {% if session['user_id'] == place.reviewer.id %} -->
                 <a href="/viewplaces/{{place.id}}/edit">Edit</a>
                 <a href="/viewplaces/{{place.id}}/delete">Delete</a>
-                {% endif %}
+                <!-- {% endif %} -->
             </p>  
             {% endfor %}
 

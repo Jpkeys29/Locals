@@ -10,7 +10,7 @@
 <body>
     <div class="mx-auto card text-center" style="width: 28rem; height: 36rem; background-color: rgb(103, 138, 14); margin-top: 5px;">
         <div class="card-title">
-            <p><h2>{{place.name}}{{place.city}}</h2></p>
+            <p><h2>{{place.name}}</h2> <h5>({{place.city}})</h5></p>
             <p>{{place.vibe}}</p>
             <p>{{place.description}}</p>
             <p>{{place.price}}</p>
@@ -21,6 +21,9 @@
 
             </div>
 
+        </div>
+        <div>
+            <a href="/myplaces">My Places</a>
         </div>
         <div>
             <a href="/home">Home</a>

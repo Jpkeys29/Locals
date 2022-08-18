@@ -1,4 +1,3 @@
-import re
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
 from flask import flash, session
@@ -114,14 +113,41 @@ class Place:
         this_user_object = user.User(user_diction_object)
         place_object.reviewer = this_user_object
         return place_object
-            
 
-    # Get one reviewer with all places
-    # It requires a JOIN we want to get all the places associated with one user
+
     # @classmethod
-    # def get_all_places_with_reviewer(cls):
-    #     query = "SELECT * FROM places JOIN users ON places.user_id = users.id;"
-    # 
+    # def get_all_places_by_user(cls,data):
+    #     query = "SELECT * FROM users LEFT JOIN places ON users.id = places.user_id WHERE users.id = %(id)s;"
+    #     results = connectToMySQL(cls.db_place).query_db(query,data)
+    #     if len(results) == 0: #if no places exist yet
+    #         return None
+    #     else:
+    #         this_user = user.User(results[0]) #user object
+    #         for this_place in results:
+    #             place_diction = {
+    #                 "id" : this_place['places.id'], #"places" is the table name
+    #                 "city": this_place['city'],
+    #                 "state": this_place['state'],
+    #                 "name": this_place['name'],
+    #                 "type": this_place['type'],
+    #                 "vibe": this_place['vibe'],
+    #                 "price": this_place['price'],
+    #                 "description": this_place['description'],
+    #                 "created_at": this_place['places.created_at'],
+    #                 "updated_at": this_place['places.updated_at']
+    #             }
+    #             this_place_object = cls(place_diction) #place object
+    #             this_user.places.append(this_place_object) 
+    #     return this_user
+
+    
+    # def full_name(self):
+    #     return f"{self.first_name} {self.last_name}"
+    #     pass
+
+
+
+    
     
 
     # @classmethod

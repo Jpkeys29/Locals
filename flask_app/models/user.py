@@ -1,4 +1,5 @@
 from sqlite3 import Row
+from tkinter import Place
 from unittest import result
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
@@ -79,28 +80,3 @@ class User:
         return all_users
         print(all_users)
 
-    @classmethod
-    def get_one_user_with_places(cls,data):
-        query = "SELECT * FROM users LEFT JOIN places ON users.id = user_id WHERE users.id = %(id)s;"
-        results = connectToMySQL(cls.db_name).query_db(query,data)  #list of dictionaries
-        print(f"RESULTS:{results}")
-        #make an user object
-        this_user = cls(results[0])
-        #go through each place
-        for row in results:
-        # make a dictionary for the place info
-            place_info ={
-                'id': row['place.id'],
-                'city':row['city'],
-                'state':row['state'],
-                'name':row['name'],
-                'type':row['type'],
-                'vibe':row['vibe'],
-                'price':row['price'],
-                'description':row['description'],
-                'created_at':row['place.created_at'],
-                'uptdated_at':row['place.uptdated_at'],
-            }
-        
-
-        pass
