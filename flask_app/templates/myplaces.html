@@ -12,15 +12,12 @@
         <h1 class="class-header">My Places</h1>
         <div class="card-body">
 
-            {% for this_place in this_user_with_places %}
-            {{this_place.name}}
-            {% endfor %} 
-            {% for place in place %}
+            {% for place in places %}
             <p>
                 <a href="/viewplaces/{{place.id}}">{{place.name}} ({{place.city}})</a>
                 {% if session['user_id'] == place.reviewer.id %}
-                <a href="/viewplaces/{{place.id}}/edit">Edit</a>
-                <a href="/viewplaces/{{place.id}}/delete">Delete</a>
+                <a href="/place/edit/{{place.id}}">Edit</a>
+                <a href="/delete/{{place.id}}">Delete</a>
                 {% endif %}
             </p>  
             {% endfor %}

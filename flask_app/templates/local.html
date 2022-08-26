@@ -26,10 +26,24 @@
                     </div>
                     <label for="name">What's the name of the place?</label>
                     <input type="text" name="name" class="form-control">
-                    <label for="type" class="form-label">Type</label>                
-                    <select name="type" class="form-select">
-                        <option value="other">Food</option>
-                        <option value="other">Drinks</option>
+
+                    <!-- <label for="type" class="form-label">Type</label> 
+                    <select name="type" class="form-select"> -->
+                        <!-- <option value="other">Food</option>
+                        <option value="other">Drinks</option> -->
+
+                    <label for="type">Type</label>
+                    <div>
+                        <div class="form-check-inline">
+                            <input type="radio" name="type" value="0" class="form-check-input">
+                            <label for="0" class="form-check-label">Food</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="type" value="1" class="form-check-input">
+                            <label for="1" class="form-check-label">Drinks</label>
+                        </div>    
+                    </div>
+                    
                     </select>
                     <label for="vibe" class="form-label">Vibe</label>
                     <select name="vibe" class="form-select">

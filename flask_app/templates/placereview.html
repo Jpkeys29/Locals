@@ -10,11 +10,11 @@
 <body>
     <div class="mx-auto card text-center" style="width: 28rem; height: 36rem; background-color: rgb(173, 220, 55); margin-top: 5px;">
         <!-- <form action="/places/goplaces" method="POST"> -->
-            <div class="card_title"><h1>Hi {{user.first_name}}</h1></div>
+            <div class="card_title"><h1></h1></div>
         <div class="card-body">
         
-            <h4>These are the places in <h4>
-            {% for place in all_places%}
+            <h4>These are the places in {{places}} <h4>
+            {% for place in places %}
             <p>{{place.city}} {{place.state}}</p>
             <p>{{place.name}}</p>
             

@@ -1,6 +1,7 @@
+from unicodedata import name
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
-from flask import flash, session
+from flask import flash, session,request 
 from flask_app.models import user
 from pprint import pprint
 
@@ -37,16 +38,16 @@ class Place:
         
 
     @classmethod
-    def get_all_from_one_city(cls,data):
+    def get_all_places_by_city(cls,data):
         query = "SELECT * FROM places WHERE city = %(city)s;"
         results = connectToMySQL(cls.db_place).query_db(query,data)
         # pprint(results)
         # if len(results)<1:
         #     return "AWWW there are no places for this city"
-        all_places_from_city = []
-        for row in results:
-            all_places_from_city.append(cls(row))
-        return all_places_from_city
+        all_places_by_city = []
+        for row in results:           
+            all_places_by_city.append(cls(row))
+        return all_places_by_city
         # pprint(all_places_from_city)
 
     @classmethod
@@ -140,19 +141,37 @@ class Place:
     #             this_user.places.append(this_place_object) 
     #     return this_user
 
-    
+    @classmethod
+    def get_all_places_by_user(cls,data):
+        query = "SELECT * FROM places JOIN users ON places.user_id = users.id WHERE users.id = %(id)s;"
+        results = connectToMySQL(cls.db_place).query_db(query,data)
+        all_places = []
+        for row in results:
+            this_place = cls(row)
+            user_dictionary = {
+                "id":row["users.id"],
+                "first_name":row["first_name"],
+                "last_name":row["last_name"],
+                "email":row["email"],
+                "password":row["password"],
+                "created_at":row["users.created_at"],
+                "updated_at":row["users.updated_at"],
+            }
+            this_reviewer = user.User(user_dictionary)
+            this_place.reviewer = this_reviewer
+            all_places.append(this_place)
+        return all_places
+
+
+    #Name method
     # def full_name(self):
     #     return f"{self.first_name} {self.last_name}"
     #     pass
 
 
-
-    
-    
-
-    # @classmethod
-    # def update(cls,data):
-    #     query = UPDATE places SET 
-    #     pass
+    @classmethod
+    def update(cls,data):
+        query = "UPDATE places SET city=%(city)s, state=%(state)s, name=%(name)s, type=%(type)s, vibe=%(vibe)s, price=%(price)s, description=%(description)s, updated_at=NOW() WHERE id=%(id)s;"
+        return connectToMySQL(cls.db_place).query_db(query,data)
 
 
