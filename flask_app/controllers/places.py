@@ -23,16 +23,6 @@ def create_place():
     Place.create_place(place_diction)
     return redirect ('/home')
 
-#ORIGINAL(DO NOT EDIT)
-# @app.route('/myplaces/')
-# def my_places():
-#     if 'user_id' not in session:
-#         return redirect('/')
-#     user_diction ={
-#         'id':session['user_id']
-#     }
-#     return render_template('myplaces.html', user= User.get_by_id(user_diction),place = Place.get_all_places_with_reviewers())
-
 #DUPLICATE (FEEL FREE TO EDIT)
 @app.route('/myplaces/')
 def my_places():
@@ -42,22 +32,6 @@ def my_places():
         'id':session['user_id']
     }
     return render_template('myplaces.html', user= User.get_by_id(user_diction), places = Place.get_all_places_by_user(user_diction))
-
-# @app.route("/places/goplaces", methods=['POST'])
-# def goplaces():
-#     if 'user_id' not in session:
-#         return redirect('/')
-#     return redirect('/placereview')
-
-
-@app.route('/placereview')
-def place_review():
-    if 'user_id' not in session:
-        return redirect('/')
-    place_diction ={
-        'id':id
-    }
-    return render_template('placereview.html',places = Place.get_all_places_by_city(place_diction))
 
 
 @app.route("/viewplaces/<int:id>")
@@ -103,5 +77,26 @@ def update(id):
         'description': request.form['description'],
     }
     Place.update(place_diction)
-    return redirect ('/home')
+    return redirect('/home')
 
+
+@app.route("/places/goplaces")
+def places_city():
+    if 'user_id' not in session:
+        return redirect('/')
+    # if not Place.validate_place(request.form):
+    #     return redirect(f"/place/edit/{id}")
+    place_diction = {
+        'city':request.args['city']
+    }
+    return render_template('placereview.html',places = Place.get_all_places_by_city(place_diction))
+
+#ORIGINAL(DO NOT EDIT)
+# @app.route('/myplaces/')
+# def my_places():
+#     if 'user_id' not in session:
+#         return redirect('/')
+#     user_diction ={
+#         'id':session['user_id']
+#     }
+#     return render_template('myplaces.html', user= User.get_by_id(user_diction),place = Place.get_all_places_with_reviewers())

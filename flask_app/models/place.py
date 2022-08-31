@@ -1,7 +1,7 @@
 from unicodedata import name
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
-from flask import flash, session,request 
+from flask import flash, session,request,flash
 from flask_app.models import user
 from pprint import pprint
 
@@ -42,13 +42,12 @@ class Place:
         query = "SELECT * FROM places WHERE city = %(city)s;"
         results = connectToMySQL(cls.db_place).query_db(query,data)
         # pprint(results)
-        # if len(results)<1:
-        #     return "AWWW there are no places for this city"
+        if len(results)<1:
+            return "AWWW there are no places for this city"
         all_places_by_city = []
         for row in results:           
             all_places_by_city.append(cls(row))
         return all_places_by_city
-        # pprint(all_places_from_city)
 
     @classmethod
     def get_one_place(cls,data):
@@ -114,32 +113,6 @@ class Place:
         this_user_object = user.User(user_diction_object)
         place_object.reviewer = this_user_object
         return place_object
-
-
-    # @classmethod
-    # def get_all_places_by_user(cls,data):
-    #     query = "SELECT * FROM users LEFT JOIN places ON users.id = places.user_id WHERE users.id = %(id)s;"
-    #     results = connectToMySQL(cls.db_place).query_db(query,data)
-    #     if len(results) == 0: #if no places exist yet
-    #         return None
-    #     else:
-    #         this_user = user.User(results[0]) #user object
-    #         for this_place in results:
-    #             place_diction = {
-    #                 "id" : this_place['places.id'], #"places" is the table name
-    #                 "city": this_place['city'],
-    #                 "state": this_place['state'],
-    #                 "name": this_place['name'],
-    #                 "type": this_place['type'],
-    #                 "vibe": this_place['vibe'],
-    #                 "price": this_place['price'],
-    #                 "description": this_place['description'],
-    #                 "created_at": this_place['places.created_at'],
-    #                 "updated_at": this_place['places.updated_at']
-    #             }
-    #             this_place_object = cls(place_diction) #place object
-    #             this_user.places.append(this_place_object) 
-    #     return this_user
 
     @classmethod
     def get_all_places_by_user(cls,data):
