@@ -9,6 +9,7 @@
     <!-- <img src="{{ url_for('static', filename='img/loinpic.avif') }}"> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,100;1,300&family=Shrikhand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700;6..96,900&family=Bungee+Outline&family=Bungee+Shade&family=Cantata+One&family=Limelight&family=Roboto:ital,wght@0,300;0,400;1,100;1,300&family=Sansita:wght@900&family=Shrikhand&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bigshot+One&family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700;6..96,900&family=Bungee+Outline&family=Bungee+Shade&family=Cantata+One&family=Limelight&family=Merriweather+Sans:ital,wght@1,800&family=Newsreader:opsz,wght@6..72,300&family=Roboto:ital,wght@0,300;0,400;1,100;1,300&family=Sansita:wght@900&family=Shrikhand&family=Tenor+Sans&display=swap" rel="stylesheet">
     <title>Visiting</title>
 
 
@@ -16,7 +17,15 @@
     <title>Local</title>
 </head>
 <body>
-    <div class="mx-auto card text-center" style="width: 28rem; height: 38rem; background-color: rgb(244,140,6); margin-top: 5px;"> 
+    <nav class="navbar bg-light">
+        <h3><a class="navbar-brand" style="color: black;">Locals</a></h3>
+        <ul class="nav-links">
+            <li><h5><a href="/home">Home</a></h5></li>
+            <li><h5><a href="/myplaces">My Places</a></h5></li>
+            <li><h5><a href="/logout"><button class="btn btn-outline-danger btn-sm">Log Out</button></a> </h5></li>
+        </ul>
+    </nav>
+    <div class="mx-auto card text-center" style="width: 28rem; height: 41rem; background-color: rgb(244,140,6); margin-top: 5px;"> 
         <div class="">
             <h1 class="card-header">{{ user.first_name }} is a Local</h1>
             <form action="/place/create" method="post" >
@@ -24,47 +33,98 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <label for="city">City</label>
+                            <p><label for="city">City</label></p>
                             <input type="text"  name="city" class="form-control" placeholder="Muncie">
                         </div>
                         <div class="col">
-                            <label for="state">State</label>
-                            <input type="text" class="form-control" name="state" placeholder="IN">
+                            <p><label for="state">State</label></p>
+                            <select name="state" class="form-select">
+                                <option value="">-- Select State --</option>
+                                <option value="AK">AK</option>
+                                <option value="AZ">AZ</option>
+                                <option value="AR">AR</option>
+                                <option value="CA">CA</option>
+                                <option value="CO">CO</option>
+                                <option value="CT">CT</option>
+                                <option value="DE">DE</option>
+                                <option value="DC">DC</option>
+                                <option value="FL">FL</option>
+                                <option value="GA">GA</option>
+                                <option value="HI">HI</option>
+                                <option value="ID">ID</option>
+                                <option value="IL">IL</option>
+                                <option value="IN">IN</option>
+                                <option value="IA">IA</option>
+                                <option value="KS">KS</option>
+                                <option value="KY">KY</option>
+                                <option value="LA">LA</option>
+                                <option value="ME">ME</option>
+                                <option value="MD">MD</option>
+                                <option value="MA">MA</option>
+                                <option value="MI">MI</option>
+                                <option value="MN">MN</option>
+                                <option value="MS">MS</option>
+                                <option value="MO">MO</option>
+                                <option value="MT">MT</option>
+                                <option value="NE">NE</option>
+                                <option value="NV">NV</option>
+                                <option value="NH">NH</option>
+                                <option value="NJ">NJ</option>
+                                <option value="NM">NM</option>
+                                <option value="NY">NY</option>
+                                <option value="NC">NC</option>
+                                <option value="ND">ND</option>
+                                <option value="OH">OH</option>
+                                <option value="OK">OK</option>
+                                <option value="OR">OR</option>
+                                <option value="PA">PA</option>
+                                <option value="PR">PR</option>
+                                <option value="RI">RI</option>
+                                <option value="SC">SC</option>
+                                <option value="SD">SD</option>
+                                <option value="TN">TN</option>
+                                <option value="TX">TX</option>
+                                <option value="UT">UT</option>
+                                <option value="VT">VT</option>
+                                <option value="VI">VI</option>
+                                <option value="VA">VA</option>
+                                <option value="WA">WA</option>
+                                <option value="WV">WV</option>
+                                <option value="WI">WI</option>
+                                <option value="WY">WY</option>
+                            </select>
                         </div>
                     </div>
-                    <label for="name">What's the name of the place?</label>
+                    <p><label for="name">What's the name of the place?</label></p>
                     <input type="text" name="name" class="form-control">
 
-                    <label for="type">Type</label>
-                    <div>
-                        <div class="form-check-inline">
-                            <input type="radio" name="type" value="0" class="form-check-input">
-                            <label for="0" class="form-check-label">Food</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" name="type" value="1" class="form-check-input">
-                            <label for="1" class="form-check-label">Drinks</label>
-                        </div>    
-                    </div>
                     
+                    <p><label for="type">Type</label></p>
+                    <select name="type" class="form-select">
+                        <option value="">-- Select Type --</option>
+                        <option value="Food">Food &#127789</option>
+                        <option value="Drinks">Drinks &#127864</option>
                     </select>
-                    <label for="vibe" class="form-label">Vibe</label>
+                    
+                    <p><label for="vibe" >Vibe</label></p>
                     <select name="vibe" class="form-select">
-                        <option value="other">Chill</option>
-                        <option value="other">Lively</option>
-                        <option value="other">Party Time</option>
+                        <option value="">-- Select Vibe --</option>
+                        <option value="Chill">Chill &#9749</option>
+                        <option value="Lively">Lively</option>
+                        <option value="Party Time">Party Time &#127870;</option>
                     </select>
-                    <label for="price">Price</label>
+
+                    <p><label for="price">Price</label></p>
                     <select name="price" class="form-select">
-                        <option value="other">$</option>
-                        <option value="other">$$</option>
-                        <option value="other">$$$</option>
+                        <option value="">-- Select Price --</option>
+                        <option value="$ &#128181"> &#128181</option>
+                        <option value="$$"> &#128181&#128181</option>
+                        <option value="$$$"> &#128181&#128181&#128181</option>
                     </select>
-                    <label for="description">Tell us more about it</label>
+                    <p><label for="description">Tell us more about it</label></p>
                     <textarea name="description" cols="25" rows="3" class="form-control"></textarea>
                 </div>
-                <!-- <button type="submit" class="btn btn-outline-dark">Send</button>   -->
-                <p><input type="submit" value="Create"> </p> 
+                <h5><input type="submit" value="Create"></h5> 
             </form>  
             {% with messages = get_flashed_messages() %}  
                         {% if messages %}                           
@@ -73,7 +133,6 @@
                             {% endfor %}
                         {% endif %}
                     {% endwith %}   
-            <p><a href="/home">Home</a><p> 
         </div>                        
     </div>   
 </body>

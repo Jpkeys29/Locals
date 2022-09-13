@@ -4,14 +4,32 @@ h1,h3{
 
 }
 
-/* card-body{
-    font-family: 'Sansita', sans-serif;
+h5{
     font-family: 'Bungee Shade', cursive;
 
-} */
+}
 
 p{
-    /* font-family: 'Sansita', sans-serif; */
-    font-family: 'Bungee Shade', cursive;
-    /* font-family: 'Limelight', cursive; */
+    font-family: 'Bigshot One', cursive;
+    font-family: 'Cantata One', serif;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.nav-links {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    justify-content: space-around;
+
+}
+
+.navbar{
+    height: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.navbar-brand{
+    font-size: larger;
 }

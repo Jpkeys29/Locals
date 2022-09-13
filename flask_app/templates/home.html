@@ -17,23 +17,23 @@
                 <div>
                     <h1 class="card-header" style="background-color: white;">Hello {{ user.first_name }}!</h1>
                 <div class="card-body">
-                    <p>
+                    <h5>
                         <a href="/visit">I want to eat and drink like a Local</a>
-                    </p>
+                    </h5>
                     {% for user in all_users %}
-                    <p>{{user.first_name}}</p>
+                    <h5>{{user.first_name}}</p>
                     {% endfor %}
-                    <p>
+                    <h5>
                         <a href="/local">I am a Local</a>
-                    </p>
-                    <p>
+                    </h5>
+                    <h5>
                         <a href="/myplaces">My Places</a>
-                    </p>
+                    </h5>
                 </div>
                     
                 </div>
             </form>
-            <a href="/logout"><button class="btn btn-outline-danger btn-sm">Log Out</button></a>             
+            <h5><a href="/logout"><button class="btn btn-outline-danger btn-sm">Log Out</button></a>           </h5>
     </div> 
 </body>
 </html>

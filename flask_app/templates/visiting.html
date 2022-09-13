@@ -13,28 +13,26 @@
 <body>
     <nav class="navbar navbar-dark bg-light">
         <h3><a class="navbar-brand" style="color: black;">Locals</a></h3>
-        <div class="d-md-inline-flex">
-            <p><a href="/home">Home</a></p>
-            <p><a href="/myplaces">My Places</a></p>
-            <p><a href="/logout"><button class="btn btn-outline-danger btn-sm">Log Out</button></a> </p> 
-        </div>
+        <ul class="nav-links">
+            <li><h5><a href="/home">Home</a></h5></li>
+            <li><h5><a href="/myplaces">My Places</a></h5></li>
+            <li><h5><a href="/logout"><button class="btn btn-outline-danger btn-sm">Log Out</button></a> </h5></li>
+        </ul>
     </nav>
     <div class="container">
-        <div class="mx-auto card text-center" style="width: 28rem; height: 36rem; background-color: rgb(235, 191, 129); margin-top: 5px;">
-            <h1 class="card-header">Where are you going {{ user.first_name }}?</h1>
+        <div class="mx-auto card text-center" style="width: 30rem; height: 36rem; background-color: rgb(235, 191, 129); margin-top: 5px;">
+            <h1 class="card-header">Where are you going {{ user.first_name }}? &#128640</h1>
             <div class="card-body">
                 <form action="/places/goplaces">
                     <label for="places">City:</label>
                     <input type="text" name="city">
-                    <p><button type="submit">Find places</button></p>
-    
-                </form>
-                
-            </div>
-            
+                    <div>
+                        <h5><button type="submit">Find places</button></h5>
+                    </div>
+                    
+                </form>                
+            </div>           
         </div>
-
-    </div>
-    
+    </div>    
 </body>
 </html>

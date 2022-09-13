@@ -15,7 +15,7 @@ def create_place():
         'city': request.form['city'],
         'state': request.form['state'],
         'name':request.form['name'],
-        'type': int(request.form['type']),
+        'type': request.form['type'],
         'vibe': request.form['vibe'],
         'price': request.form['price'],
         'description': request.form['description'],
@@ -90,6 +90,9 @@ def places_city():
         'city':request.args['city']
     }
     return render_template('placereview.html',places = Place.get_all_places_by_city(place_diction))
+
+
+
 
 #ORIGINAL(DO NOT EDIT)
 # @app.route('/myplaces/')
