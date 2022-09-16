@@ -92,7 +92,10 @@ def places_city():
     return render_template('placereview.html',places = Place.get_all_places_by_city(place_diction))
 
 
-
+@app.route("/place/delete/<int:id>", methods = ['POST'])
+def delete(id):
+    Place.delete(request.form)
+    return redirect('/home')
 
 #ORIGINAL(DO NOT EDIT)
 # @app.route('/myplaces/')

@@ -147,4 +147,7 @@ class Place:
         query = "UPDATE places SET city=%(city)s, state=%(state)s, name=%(name)s, type=%(type)s, vibe=%(vibe)s, price=%(price)s, description=%(description)s, updated_at=NOW() WHERE id=%(id)s;"
         return connectToMySQL(cls.db_place).query_db(query,data)
 
-
+    @classmethod
+    def delete(cls,data):
+        query = "DELETE FROM places WHERE id = %(id)s;"
+        return connectToMySQL(cls.db_place).query_db(query,data)

@@ -20,7 +20,7 @@
             <li><h5><a href="/logout"><button class="btn btn-outline-danger btn-sm">Log Out</button></a> </h5></li>
         </ul>
     </nav>
-    <div class="mx-auto card text-center" style="width: 40rem; height: 38rem; background-color: rgb(240, 113, 103); margin-top: 5px;">
+    <div class="mx-auto card text-center" style="width: 40rem;  background-color: rgb(240, 113, 103); margin-top: 5px;">
         <h1 class="class-header">My Places</h1>
         <div class="card-body">
 
@@ -29,9 +29,8 @@
                 
                 <h5><a href="/viewplaces/{{place.id}}">{{place.name}} ({{place.city}})</a></h5>
                 {% if session['user_id'] == place.reviewer.id %}
-                <p><a href="/place/edit/{{place.id}}">Edit</a>
-                <a href="/delete/{{place.id}}">Delete</a></p>
-                <form action="place/delete/{{place.id}}" method="POST">
+                <a href="/place/edit/{{place.id}}"><p>Edit</p></a>
+                <form action="/place/delete/{{place.id}}" method="POST">
                     <input name="id" value="{{place.id}}" type="hidden">
                     <p><button type="submit" class="btn btn-outline-dark btn-sm">Delete</button></p>
                 </form>
@@ -41,7 +40,7 @@
             {% endfor %}
 
         </div>
-        <h5><a href="/local">Add a Place</a></h5>
+        <a href="/local"><h1 style="font-size:x-large">Add a Place</h1></a>
     </div>
     
 </body>

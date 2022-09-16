@@ -25,7 +25,7 @@
             <li><h5><a href="/logout"><button class="btn btn-outline-danger btn-sm">Log Out</button></a> </h5></li>
         </ul>
     </nav>
-    <div class="mx-auto card text-center" style="width: 28rem; height: 41rem; background-color: rgb(244,140,6); margin-top: 5px;"> 
+    <div class="mx-auto card text-center" style="width: 28rem; background-color: rgb(244,140,6); margin-top: 5px;"> 
         <div class="">
             <h1 class="card-header">{{ user.first_name }} is a Local</h1>
             <form action="/place/create" method="post" >
@@ -33,11 +33,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <p><label for="city">City</label></p>
+                            <label for="city"><p>City</p></label>
                             <input type="text"  name="city" class="form-control" placeholder="Muncie">
                         </div>
                         <div class="col">
-                            <p><label for="state">State</label></p>
+                            <label for="state"><p>State</p></label>
                             <select name="state" class="form-select">
                                 <option value="">-- Select State --</option>
                                 <option value="AK">AK</option>
@@ -95,11 +95,10 @@
                             </select>
                         </div>
                     </div>
-                    <p><label for="name">What's the name of the place?</label></p>
+                    <label for="name"><p>What's the name of the place?</p></label>
                     <input type="text" name="name" class="form-control">
-
                     
-                    <p><label for="type">Type</label></p>
+                    <label for="type"><p>Type</p></label>
                     <select name="type" class="form-select">
                         <option value="">-- Select Type --</option>
                         <option value="Food">Food &#127789</option>
@@ -113,6 +112,7 @@
                         <option value="Lively">Lively</option>
                         <option value="Party Time">Party Time &#127870;</option>
                     </select>
+
 
                     <p><label for="price">Price</label></p>
                     <select name="price" class="form-select">
