@@ -1,6 +1,4 @@
-from sqlite3 import Row
-from tkinter import Place
-from unittest import result
+
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
 from flask import flash, session
