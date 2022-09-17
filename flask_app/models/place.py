@@ -1,4 +1,4 @@
-from unicodedata import name
+
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
 from flask import flash, session,request,flash
@@ -23,7 +23,7 @@ class Place:
         
     @classmethod
     def create_place(cls,data):
-        query = "INSERT INTO places(city,state,name,type,vibe,price,description,user_id) VALUES (%(city)s,%(state)s,%(name)s,%(type)s,%(vibe)s,%(price)s,%(description)s,%(user_id)s);"
+        query = "INSERT INTO places (city,state,name,type,vibe,price,description,user_id) VALUES (%(city)s,%(state)s,%(name)s,%(type)s,%(vibe)s,%(price)s,%(description)s,%(user_id)s);"
         return connectToMySQL(cls.db_place).query_db(query,data)
         
 
