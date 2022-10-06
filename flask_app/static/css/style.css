@@ -1,5 +1,4 @@
 h1,h3{
-    /* font-family: 'Roboto', sans-serif; */
     font-family: 'Shrikhand', cursive;
 
 }
@@ -32,4 +31,8 @@ p{
 
 .navbar-brand{
     font-size: larger;
+}
+
+.alert{
+    color: aliceblue;
 }

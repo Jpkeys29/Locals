@@ -26,10 +26,12 @@ def create_user():
 
 @app.route('/login', methods=['POST'])
 def login():
-    user_from_db = user.User.get_by_email({'email': request.form['email']})
-    if user_from_db and bcrypt.check_password_hash(user_from_db.password, request.form ['password']):
+    #  check if the user is in db based in the email form
+    user_from_db = user.User.get_by_email({'email': request.form['email']})  
+    # if email in db, check the password from the form to the password for that user in the db
+    if user_from_db and bcrypt.check_password_hash(user_from_db.password, request.form ['password']):  
         session['user_id'] = user_from_db.id
-        return redirect('/home')
+        return redirect('/home') # if both the above statements are true, log them in (save their id in session)
     else:
         flash("Invalid email/password", 'login')
         return redirect('/')

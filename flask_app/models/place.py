@@ -1,9 +1,10 @@
-
+import json
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
 from flask import flash, session,request,flash
 from flask_app.models import user
 from pprint import pprint
+# import requests
 
 class Place:
     db_place = 'locals'
@@ -135,13 +136,6 @@ class Place:
             all_places.append(this_place)
         return all_places
 
-
-    #Name method
-    # def full_name(self):
-    #     return f"{self.first_name} {self.last_name}"
-    #     pass
-
-
     @classmethod
     def update(cls,data):
         query = "UPDATE places SET city=%(city)s, state=%(state)s, name=%(name)s, type=%(type)s, vibe=%(vibe)s, price=%(price)s, description=%(description)s, updated_at=NOW() WHERE id=%(id)s;"
@@ -151,3 +145,20 @@ class Place:
     def delete(cls,data):
         query = "DELETE FROM places WHERE id = %(id)s;"
         return connectToMySQL(cls.db_place).query_db(query,data)
+
+
+
+    # @staticmethod
+    # def api_call(request):
+    #     url = "https://instagram188.p.rapidapi.com/userphoto/instagram"
+
+    #     headers = {
+    #         "X-RapidAPI-Key": "88e3695b8bmsh42ce67b8bf7a723p1d4abcjsn862b3172e524",
+    #         "X-RapidAPI-Host": "instagram188.p.rapidapi.com"
+    #     }
+
+    #     response = requests.request("GET", url, headers=headers)
+
+    #     profile_pics = response.json()
+
+    #     pass

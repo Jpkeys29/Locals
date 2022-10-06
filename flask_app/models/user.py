@@ -1,8 +1,6 @@
-
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
 from flask import flash, session
-import pprint
 
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -21,7 +19,7 @@ class User:
 
     @classmethod
     def create(cls,data):
-        query = 'insert into users(first_name,last_name,email,password) VALUES (%(first_name)s, %(last_name)s,%(email)s,%(password)s);'
+        query = 'insert into users (first_name,last_name,email,password) VALUES (%(first_name)s, %(last_name)s,%(email)s,%(password)s);'
         results = connectToMySQL(cls.db_name).query_db(query,data)
         return results
 

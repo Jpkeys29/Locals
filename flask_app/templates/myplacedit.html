@@ -51,9 +51,9 @@
                     </select>
                     <p><label for="price">Price</label></p>
                     <select name="price" class="form-select" value="{{place.price}}">
-                        <option value="$">$</option>
-                        <option value="$$">$$</option>
-                        <option value="$$$">$$$</option>
+                        <option {{"selected" if place.price=="$"}} value="$">&#128181</option>
+                        <option {{"selected" if place.price=="$$"}} value="$$">&#128181&#128181</option>
+                        <option {{"selected" if place.price=="$$$"}} value="$$$">&#128181&#128181&#128181</option>
                     </select>
                     <p><label for="description">Tell us more about it</label></p>
                     <textarea name="description" cols="25" rows="3" class="form-control">{{place.description}}</textarea>

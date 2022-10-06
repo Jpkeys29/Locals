@@ -1,8 +1,10 @@
-from crypt import methods
 from flask_app import app
 from flask import render_template,redirect, session, request,flash
 from flask_app.models.user import User
 from flask_app.models.place import Place
+# import requests
+# from gitignore import API KEY
+
 
 @app.route('/place/create', methods=['POST'])
 def create_place():
@@ -96,6 +98,30 @@ def places_city():
 def delete(id):
     Place.delete(request.form)
     return redirect('/home')
+
+
+
+
+# API route
+# @app.route("/insta/<int:id>")
+# def get_insta(id):
+#     if request.args['place']:
+#         insta_pic = requests.get(f"https://instagram188.p.rapidapi.com/userphoto/instagram/{request.arg['place']}").json()
+    
+#     return render_template('viewplaces.html', results = insta_pic)
+# pass
+
+
+
+
+
+
+
+
+
+
+
+
 
 #ORIGINAL(DO NOT EDIT)
 # @app.route('/myplaces/')
